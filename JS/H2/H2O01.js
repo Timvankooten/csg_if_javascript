@@ -1,4 +1,4 @@
-var kater,katerKlein,landschap,kever;
+var kater,kater,landschap,kever;
 var keverX;
 var keverY;
 
@@ -16,9 +16,10 @@ function setup() {
 }
 
 function draw() {
-  background(bomen);  
-  // image(katerKlein,0,0);
+  background('grey');  
+  //background(kater);
+  image(kater,25,25,400,400);
   keverX+=random(-5,5);
   keverY+=random(-5,5);
-  // image(kever,keverX,keverY);
+  image(kever,keverX,keverY,30,30);
 }
