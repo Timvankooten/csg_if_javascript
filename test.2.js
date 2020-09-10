@@ -41,9 +41,11 @@ var ball2 = {
 
 
     }
-    aanraken(){ if (dist(ball["x"], ball["y"], ball2["x"], ball2["y"]) < diameter / 2) {
-        kleur = "green";
-    }}
+    aanraken() {
+        if (dist(ball["x"], ball["y"], ball2["x"], ball2["y"]) < diameter / 2) {
+            kleur = "green";
+        }
+    }
 
 }
 
@@ -65,7 +67,7 @@ function draw() {
 
 
 
-   
+
 
 }
 
