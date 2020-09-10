@@ -17,6 +17,8 @@ var ball = {
     teken() {
         fill("red");
         ellipse(ball['x'], ball['y'], diameter);
+        ball['y'] = constrain(ball['y'], diameter / 2, groot - diameter / 2);
+        ball['x'] = constrain(ball['x'], diameter / 2, groot - diameter / 2);
     }
 }
 
@@ -34,7 +36,14 @@ var ball2 = {
         fill(kleur);
         ellipse(ball2['x'], ball2['y'], diameter);
 
+        ball2['y'] = constrain(ball2['y'], diameter / 2, groot - diameter / 2);
+        ball2['x'] = constrain(ball2['x'], diameter / 2, groot - diameter / 2);
+
+
     }
+    aanraken(){ if (dist(ball["x"], ball["y"], ball2["x"], ball2["y"]) < diameter / 2) {
+        kleur = "green";
+    }}
 
 }
 
@@ -54,15 +63,9 @@ function draw() {
     ball2.beweeg();
     ball2.teken();
 
-    ball['y'] = constrain(ball['y'], diameter / 2, groot - diameter / 2);
-    ball['x'] = constrain(ball['x'], diameter / 2, groot - diameter / 2);
 
-    ball2['y'] = constrain(ball2['y'], diameter / 2, groot - diameter / 2);
-    ball2['x'] = constrain(ball2['x'], diameter / 2, groot - diameter / 2);
 
-    if (dist(ball["x"], ball["y"], ball2["x"], ball2["y"]) < diameter / 2) {
-        kleur = "green";
-    }
+   
 
 }
 
