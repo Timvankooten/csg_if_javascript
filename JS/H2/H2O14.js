@@ -3,7 +3,7 @@ var rij = 0;
 var aantalSpriteRijen = 2;
 var aantalSpriteKolommen = 9;
 
-var schaal = 0.25;
+var schaal = 0.33;
 var breedte; 
 var hoogte; 
 var sBr; 
