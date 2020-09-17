@@ -50,7 +50,12 @@ var jos = {
   },
 
   wordtGeraakt(vijand) {
+      if(dist(this.x,this.y,alice.x,alice.y)){
+
+      }
+      else{
     return false;
+      }
   },
 
   toon() {
@@ -62,7 +67,7 @@ var alice = {
   x: 700,
   y: 200,
   sprite: null,
-  stapGrootte: null,
+  stapGrootte:null,
 
   beweeg() {
     this.x += floor(random(-1,2))*this.stapGrootte;
@@ -102,7 +107,9 @@ function draw() {
   raster.teken();
   jos.beweeg();
   jos.toon();
+  
   alice.toon();
+  alice.beweeg();
 
   if (jos.wordtGeraakt(alice)) {
     noLoop();

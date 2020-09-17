@@ -1,8 +1,7 @@
 var piraat = {
     x: 50,
     y: 50,
-    breedte: 150,
-    hoogte: 50,
+    breedte: 50,
     stapGrootte: 5,
 
     beweeg() {
@@ -26,7 +25,7 @@ var piraat = {
     teken() { 
        
         fill('brown');
-        ellipse(this.x, this.y, this.breedte, this.hoogte);
+        ellipse(this.x, this.y, this.breedte);
     }
 }
 
@@ -38,8 +37,7 @@ var eiland = {
        benGeraakt: false,
 
     wordJeGeraakt(vijand) {
-        if ( piraat.x - this.x <= this.breedte + piraat.breedte  && 
-           piraat.y - this.y <= this.breedte + piraat.hoogte ) {
+        if (dist(this.x,this.y,piraat.x,piraat.y)<=this.breedte/2 + piraat.breedte/2) {
             this.benGeraakt = true;
         }
         else{
