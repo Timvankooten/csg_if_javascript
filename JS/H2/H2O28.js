@@ -2,7 +2,7 @@ var raster = {
   aantalRijen: 6,
   aantalKolommen: 9,
   celGrootte: null,
-
+  
   berekenCelGrootte() {
     this.celGrootte = canvas.width/this.aantalKolommen;
   },
@@ -26,7 +26,7 @@ var jos = {
   aantalFrames: 6,
   frameNummer: 3,
   stapGrootte: null,
-
+  
   beweeg() {
     if (keyIsDown(LEFT_ARROW)) {
       this.x -= this.stapGrootte;
@@ -44,30 +44,31 @@ var jos = {
       this.y += this.stapGrootte;
       this.frameNummer = 5;
     }
-
+    
     this.x = constrain(this.x,0,canvas.width-raster.celGrootte);
     this.y = constrain(this.y,0,canvas.height-raster.celGrootte);
   },
-
+  
   wordtGeraakt(vijand) {
-      if(dist(this.x,this.y,alice.x,alice.y)){
-
-      }
-      else{
-    return false;
-      }
+    if (this.x == vijand.x && this.y == vijand.y) {
+      return true;
+    }
+    else {
+      return false;
+    }
   },
-
+  
   toon() {
     image(this.animatie[this.frameNummer],this.x,this.y,raster.celGrootte,raster.celGrootte);
   }
 }
 
+
 var alice = {
   x: 700,
   y: 200,
   sprite: null,
-  stapGrootte:null,
+  stapGrootte: null,
 
   beweeg() {
     this.x += floor(random(-1,2))*this.stapGrootte;
@@ -76,12 +77,11 @@ var alice = {
     this.x = constrain(this.x,0,canvas.width - raster.celGrootte);
     this.y = constrain(this.y,0,canvas.height - raster.celGrootte);
   },
-
+  
   toon() {
     image(this.sprite,this.x,this.y,raster.celGrootte,raster.celGrootte);
   }
 }
-
 
 
 function preload() {
@@ -98,19 +98,17 @@ function setup() {
   canvas.parent('processing');
   frameRate(10);
   raster.berekenCelGrootte();
-  jos.stapGrootte= 1*raster.celGrootte;
-  alice.stapGrootte= 1*raster.celGrootte;
+  jos.stapGrootte = 1*raster.celGrootte;
+  alice.stapGrootte = 1*raster.celGrootte;
 }
 
 function draw() {
   background(brug);
   raster.teken();
   jos.beweeg();
-  jos.toon();
-  
-  alice.toon();
   alice.beweeg();
-
+  jos.toon();
+  alice.toon();
   if (jos.wordtGeraakt(alice)) {
     noLoop();
   }

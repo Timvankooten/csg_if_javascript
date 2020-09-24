@@ -19,6 +19,9 @@ var raster = {
   }
 }
 
+
+
+
 var jos = {
   x: 400,
   y: 300,
@@ -26,6 +29,7 @@ var jos = {
   aantalFrames: 6,
   frameNummer: 3,
   stapGrootte: null,
+  gehaald: false,
 
   beweeg() {
     if (keyIsDown(LEFT_ARROW)) {
@@ -45,8 +49,11 @@ var jos = {
       this.frameNummer = 5;
     }
     
-    this.x = constrain(this.x,0,canvas.width-raster.celGrootte);
+    this.x = constrain(this.x,0,canvas.width);
     this.y = constrain(this.y,0,canvas.height-raster.celGrootte);
+    if(this.x == 900){
+        this.gehaald= true;
+    }
   },
   
   wordtGeraakt(vijand) {
@@ -97,6 +104,8 @@ function setup() {
   canvas = createCanvas(900,600);
   canvas.parent('processing');
   frameRate(10);
+ textFont("newtimesroman");
+   textSize(110);
   raster.berekenCelGrootte();
   jos.stapGrootte = 1*raster.celGrootte;
   alice.stapGrootte = 1*raster.celGrootte;
@@ -112,4 +121,12 @@ function draw() {
   if (jos.wordtGeraakt(alice)) {
     noLoop();
   }
+ if (jos.gehaald == true) {
+    background('green');
+    fill('white');
+    text("Je hebt gewonnen!",30,300);
+    noLoop();
+  }
+
+  
 }
