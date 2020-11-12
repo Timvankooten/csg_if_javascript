@@ -12,6 +12,10 @@ function setup() {
     A1 = new Avatar();
     A1.teken();
     A1.beweeg();
+    I1 = new Indiaan();
+    I1.teken();
+    I1.beweeg();
+
 
 }
 
@@ -25,6 +29,7 @@ function draw() {
    background('blue');
     A1.teken();
     A1.beweeg();
-    
+    I1.teken();
+    I1.beweeg();
 }
 
